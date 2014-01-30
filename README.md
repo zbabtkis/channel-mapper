@@ -15,7 +15,6 @@ The Channel Mapper uses Angular.js and D3 for SVG building and manipulation. It 
 
 Use
 ---
--
 1. Drag an image from your local system onto the app viewport.
 2. Change the Station name and Network name in the sidebar to match the station image.
 3. Click points on the image to create a sensor mapping. A dialog will open allowing you to set name, label, sensor type and more.
