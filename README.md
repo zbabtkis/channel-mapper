@@ -13,12 +13,12 @@ The Channel Mapper uses Angular.js and D3 for SVG building and manipulation. It 
 
 ==Use==
 
-# Drag an image from your local system onto the app viewport.
-# Change the Station name and Network name in the sidebar to match the station image.
-# Click points on the image to create a sensor mapping. A dialog will open allowing you to set name, label, sensor type and more.
-# Click save.
-# You can drag points around the map if you relize you've mapped a sensor to the wrong position.
-# When you are done mapping, click export.
+1. Drag an image from your local system onto the app viewport.
+2. Change the Station name and Network name in the sidebar to match the station image.
+3. Click points on the image to create a sensor mapping. A dialog will open allowing you to set name, label, sensor type and more.
+4. Click save.
+5. You can drag points around the map if you relize you've mapped a sensor to the wrong position.
+6. When you are done mapping, click export.
 
 == Importing ==
 If you need to edit an existing channel mapping config file, click the "Import" button in the sidebar, select the file and click ok.
