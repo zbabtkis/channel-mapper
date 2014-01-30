@@ -5,9 +5,10 @@ app.directive('channelData', function(resizeResponder) {
 		restrict: "A",
 		link: function(scope, elem, attr, ctrl) {
 			var move = function(d) {
-				d.position.top = d3.event.y;
-				d.position.left = d3.event.x;
-				scope.$apply();
+				scope.$apply(function() {
+					d.position.top = d3.event.y;
+					d.position.left = d3.event.x;
+				});
 			};
 			
 			var handleDrag = d3.behavior.drag()
@@ -61,9 +62,7 @@ app.directive('channelData', function(resizeResponder) {
 					.attr('cy', function(d) { return d.position.top; });
 			};
 
-			scope.$watch('channels', drawChannels, true);
-
-			resizeResponder.respond(function() {
+			var reMap = function() {
 				scope.channels.forEach(function(channel) {
 					var size = {
 						width: elem.width(),
@@ -72,7 +71,11 @@ app.directive('channelData', function(resizeResponder) {
 
 					scope.moveChannel(channel, size);
 				});
-			});
+			};
+
+			resizeResponder.respond(reMap);
+			scope.$watch('channels', drawChannels, true);
+			scope.$on('channels.import', reMap);
 		}
 	};
 });

@@ -1,4 +1,4 @@
-app.service('resizeResponder', function() {
+app.service('resizeResponder', function($rootScope) {
 	"use strict";
 
 	var callbacks = [];
@@ -6,6 +6,7 @@ app.service('resizeResponder', function() {
 	window.onresize = function() {
 		callbacks.forEach(function(func) {
 			func();
+			$rootScope.$apply();
 		});
 	};
 

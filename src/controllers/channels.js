@@ -3,27 +3,24 @@ app.controller('ChannelsCtrl', function($scope, Channel, resizeResponder, uuid4)
 
 	$scope.showEditor = false;
 	$scope.model = {};
-	$scope.channels = [];
-
-	// Give StationCtrl access to channles.
-	$scope.data.channels = $scope.channels;
-
-	$scope.$watch('data', function() {
-		$scope.channels = $scope.data.channels;
-	});
-
 
 	$scope.saveChannel = function() {
 		var chn = $scope.model;
-
-		chn.id = uuid4.generate(); 
-		chn.isNew = false;
-		$scope.channels.push(chn);
+		
+		if(chn.isNew) {
+			chn.id = uuid4.generate(); 
+			chn.isNew = false;
+			$scope.channels.push(chn);
+		} else {
+			angular.extend($scope.model, $scope.modelCopy);
+		}
 		$scope.showEditor = false;
 	};
 
 	$scope.editChannel = function(channel) {
 		$scope.model = channel;
+		// Should only edit copy of model to be saved.
+		$scope.modelCopy = angular.copy(channel);
 		$scope.showEditor = true;
 		$scope.$apply();
 	};
@@ -37,13 +34,13 @@ app.controller('ChannelsCtrl', function($scope, Channel, resizeResponder, uuid4)
 
 	$scope.createChannel = function(data, imageSize) {
 		$scope.model = new Channel({
-			name: $scope.network + '_' + $scope.station,
+			name: $scope.meta.network + '_' + $scope.meta.station,
 			position: {
 				left: data.left,
 				top: data.top 
 			},
 			isNew: true,
-			$meta: {
+			meta: {
 				imageSize: {
 					width: imageSize.width,
 					height: imageSize.height 
@@ -58,14 +55,14 @@ app.controller('ChannelsCtrl', function($scope, Channel, resizeResponder, uuid4)
 	$scope.moveChannel = function(channel, size) {
 		var oldL = channel.position.left
 		  , oldT = channel.position.top
-		  , oldS = channel.$meta.imageSize;
+		  , oldS = channel.meta.imageSize;
 
 		channel.position = {
 			left: oldL * size.width / oldS.width,
 			top: oldT * size.height / oldS.height
 		};
 
-		channel.$meta.imageSize = {
+		channel.meta.imageSize = {
 			width: size.width,
 			height: size.height 
 		};

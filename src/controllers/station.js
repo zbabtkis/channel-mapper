@@ -1,32 +1,43 @@
-app.controller('StationCtrl', function($scope, stationDefaults) {
+app.controller('StationCtrl', function($scope, stationFile, stationDefaults) {
 	"use strict";
-	$scope.station = stationDefaults.station; 
-	$scope.network = stationDefaults.network;
-	$scope.data = { $meta: {}, channels: [] };
+
+	$scope.perspectives = {
+		BIRDS_EYE: {
+			value: 'BE',
+			name: 'Birds Eye'
+		},
+		CROSS_SECTION: {
+			value: 'CS',
+			name: 'Cross Section'
+		}
+	};
+
+	$scope.meta = {
+		station :    stationDefaults.station,
+	 	network:     stationDefaults.network,
+		perspective: $scope.perspectives.BIRDS_EYE.value
+	};
+
+	$scope.channels = [];
 
 	$scope.export = function() {
-		var data  = JSON.stringify($scope.data, null, '\t')
-		  , blob  = new Blob([data], {type: 'application/json'})
-		  , url   = window.URL.createObjectURL(blob)
-		  , $link = $('<a />');
+		var name = $scope.meta.network + '_' + $scope.meta.station + '_' + $scope.meta.perspective; 
 
-		$link.attr('href', url);
-		$link.attr('download', $scope.station + '.json');
-
-		$link[0].click();
+		stationFile.save(name, { 
+			$meta: $scope.meta, 
+			channels: $scope.channels
+		});
 	};
 
 	$scope.import = function() {
-		var file   = $('<input type="file" />').click();
-		var reader = new FileReader();
-		reader.onload = function(data) {
-			$scope.data = JSON.parse(reader.result);
-			$scope.$apply();
-		};
-
-		file.change(function() {
-			reader.readAsText(file[0].files[0]);
-		});
+		stationFile.fetch()
+			.then(function(data) {
+				$scope.meta     = data.meta;
+				$scope.channels = data.channels;
+				$scope.$broadcast('channels.import');
+			}, function(e) {
+				alert(e);
+			});
 	};
 	
 });

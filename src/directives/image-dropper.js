@@ -34,7 +34,7 @@ app.directive('imageDropper', function() {
 				stop(e);
 				reader.onload = function(e) {
 					var url = e.target.result;
-					scope.data.$meta.image = url;
+					scope.meta.image = url;
 					scope.$apply();
 				};
 

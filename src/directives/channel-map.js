@@ -19,9 +19,9 @@ app.directive('channelMap', function() {
 			};
 
 			drawMap = function() {
-				if(scope.data && scope.data.$meta.image) {
+				if(scope.meta.image) {
 					svg.selectAll('image')
-						.data([scope.data.$meta.image])
+						.data([scope.meta.image])
 						.enter()
 							.append('svg:image')
 								.attr('width', '100%')
@@ -32,7 +32,7 @@ app.directive('channelMap', function() {
 				}
 			};
 
-			scope.$watch(attr.channelMap, drawMap);
+			scope.$watch('meta.image', drawMap);
 		}
 	};
 });

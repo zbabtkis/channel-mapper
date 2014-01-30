@@ -3,39 +3,69 @@ html, body {
 	height: 100%;
 	background: #eee;
 	font-family: Helvetica, sans-serif;
+	padding: 15px;
+	background: #BBCACD;
 }
 
-input {
+input, select, button {
 	margin-bottom: 15px;
 }
 
-#app {
-	height: 100%;
+header {
+	z-index: 0;
+}
+
+header:after {
+	content: "";
+	height: 20px;
 	width: 100%;
+	background: #981E1E; 
+	display: block;
+	position: relative;
+	z-index: 0;
+	-webkit-transform: perspective(100px) rotateX(-11deg);
+	width: 98%;
+	left: 1%;
 }
 
 header h1 {
 	background: #e74c3c; 
-	color: #ecf0f1;
-	padding: 15px;
+	border: 1px solid #EAA8A8; 
+	color: #740B0B;
+	padding: 30px;
 	margin: 0;
 	font-size: 30px;
 	line-height: 30px;
 }
 
+#app {
+	border: 1px solid #30393E; 
+	border-top: none;
+	width: 98%;
+	height: calc(100% - 90px); 
+	margin: -20px auto;
+	position: relative;
+	z-index: 1;
+	background: #fff;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+
 #sidebar-region {
 	float: left;
 	width: 200px;
-	height: calc(100% - 60px);
-	background: #333;
-	padding: 15px;
+	height: 100%; 
+	background: #333; 
+	padding: 20px;
 	color: #fff;
+	overflow: auto;
 }
 
 #primary-region {
 	float: left;
 	width: calc(100% - 200px);
-	height: calc(100% - 60px);
+	height: 100%; 
 	overflow: auto;
 	position: relative;
 }
@@ -80,10 +110,9 @@ div[image-dropper] img {
 
 .add-point {
 	position: absolute;
-	background: #fff;
+	background: #F3F3F3;
 	display: none;
 	z-index: 3;
-	border: 2px solid #2c3e50;
 }
 
 .add-point.active {
@@ -93,8 +122,8 @@ div[image-dropper] img {
 .add-point h3 {
 	margin: 0;
 	padding: 15px;
-	background: #2c3e50;
-	color: #eee;
+	background: #D7D6D3;
+	color: #6e6e6e;
 }
 .add-point form {
 	padding: 15px;
