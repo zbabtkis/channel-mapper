@@ -1,0 +1,106 @@
+html, body {
+	width: 100%;
+	height: 100%;
+	background: #eee;
+	font-family: Helvetica, sans-serif;
+}
+
+input {
+	margin-bottom: 15px;
+}
+
+#app {
+	height: 100%;
+	width: 100%;
+}
+
+header h1 {
+	background: #e74c3c; 
+	color: #ecf0f1;
+	padding: 15px;
+	margin: 0;
+	font-size: 30px;
+	line-height: 30px;
+}
+
+#sidebar-region {
+	float: left;
+	width: 200px;
+	height: calc(100% - 60px);
+	background: #333;
+	padding: 15px;
+	color: #fff;
+}
+
+#primary-region {
+	float: left;
+	width: calc(100% - 200px);
+	height: calc(100% - 60px);
+	overflow: auto;
+	position: relative;
+}
+
+div[image-dropper] {
+	height: 100%;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+div[image-dropper]:before {
+	content: "Drag Image Here";
+	text-align: center;
+	top: 50%;
+	display: block;
+	margin-top: -30px;
+	font-size: 30px;
+	position: absolute;
+	width: 100%;
+	color: #333;
+	z-index: 1;
+}
+
+div[image-dropper].active {
+	background: #999;
+	color: #fff;
+}
+
+div[image-dropper].active:before {
+	content: "Drop It!";
+	z-index: 2;
+}
+
+div[image-dropper] img {
+	width: 100%;
+	height: auto;
+	z-index: 2;
+	position: relative;
+}
+
+.add-point {
+	position: absolute;
+	background: #fff;
+	display: none;
+	z-index: 3;
+	border: 2px solid #2c3e50;
+}
+
+.add-point.active {
+	display: block;
+}
+
+.add-point h3 {
+	margin: 0;
+	padding: 15px;
+	background: #2c3e50;
+	color: #eee;
+}
+.add-point form {
+	padding: 15px;
+}
+svg {
+	position: absolute;
+	top: 0;
+	z-index: 2;
+}
