@@ -43,7 +43,7 @@ app.directive('channelData', function(resizeResponder) {
 			var drawChannels = function() {
 				if(!scope.channels) return;
 				var circle = svg.selectAll('circle')
-					.data(scope.channels);
+					.data(scope.channels, function(d) { return d.id; });
 
 				circle.enter()
 					.append('circle')

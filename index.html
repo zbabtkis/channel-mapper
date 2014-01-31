@@ -32,24 +32,24 @@
 				<form role='form'>
 					<div class='form-group'>
 						<label for='label'>Label: </label>
-						<input class='form-control' ng-model='model.label' />
+						<input class='form-control' ng-model='modelCopy.label' />
 					</div>
 					<div class='form-group'>
 						<label for='name'>PubName: </label>
-						<input class='form-control' ng-model='model.name' />
+						<input class='form-control' ng-model='modelCopy.name' />
 					</div>
 					<div class='form-group'>
 						<label for='type'>Type:</label>
-						<select class='form-control' ng-model='model.type' >
+						<select class='form-control' ng-model='modelCopy.type' >
 							<option value='pt'>Pressure Transducer</option>
 							<option value='acc'>Accellerometer</option>
 						</select>
 					</div>
 					<label class='checkbox-inline'>
-						<input name='active' type='checkbox' ng-checked='model.active'> Active
+						<input name='active' type='checkbox' ng-checked='modelCopy.active'> Active
 					</label>
 					<div>
-						<button type='button' class='btn btn-danger' ng-disabled='model.isNew' ng-click='deleteChannel()'>Delete</button>
+						<button type='button' class='btn btn-danger' ng-disabled='modelCopy.isNew' ng-click='deleteChannel()'>Delete</button>
 						<button type='button' class='btn btn-primary' ng-click='saveChannel()'>Save</button>
 						<button type='button' class='btn' ng-click='showEditor = false'>Cancel</button>
 					</div>

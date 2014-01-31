@@ -5,20 +5,19 @@ app.controller('ChannelsCtrl', function($scope, Channel, resizeResponder, uuid4)
 	$scope.model = {};
 
 	$scope.saveChannel = function() {
-		var chn = $scope.model;
+		var chn = angular.extend($scope.model, $scope.modelCopy);
 		
+		$scope.showEditor = false;
 		if(chn.isNew) {
 			chn.id = uuid4.generate(); 
 			chn.isNew = false;
 			$scope.channels.push(chn);
-		} else {
-			angular.extend($scope.model, $scope.modelCopy);
-		}
-		$scope.showEditor = false;
+		} 
 	};
 
 	$scope.editChannel = function(channel) {
 		$scope.model = channel;
+
 		// Should only edit copy of model to be saved.
 		$scope.modelCopy = angular.copy(channel);
 		$scope.showEditor = true;
@@ -47,6 +46,7 @@ app.controller('ChannelsCtrl', function($scope, Channel, resizeResponder, uuid4)
 				}
 			}
 		});
+		$scope.modelCopy = angular.copy($scope.model);
 
 		$scope.showEditor = true;
 		$scope.$apply();
