@@ -1,0 +1,19 @@
+{
+  "name": "Channel Mapper",
+  "version": "1.0",
+  "main": "index.html",
+  "dependencies": {
+    "angular": "~1.2.10",
+    "d3": "~3.4.1",
+    "jquery": "~2.1.0",
+    "angular-uuid4": "~0.0.3",
+    "bootstrap": "~3.0.3",
+    "lodash": "~2.4.1",
+    "angular-bootstrap": "~0.10.0"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ]
+}

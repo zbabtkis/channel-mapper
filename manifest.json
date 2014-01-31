@@ -1,0 +1,11 @@
+{
+	"name": "Data Channel Mapper",
+	"description": "A tool for mapping positions of sensors onto a station layout image",
+	"version": "1.0",
+	"app": {
+		"background": {
+			"scripts": ["background.js"]
+		}
+	},
+	"icons": {"16": "icon-64.png", "128": "icon-128.png"}
+} 
