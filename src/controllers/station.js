@@ -24,7 +24,7 @@ app.controller('StationCtrl', function($scope, stationFile, stationDefaults) {
 		var name = $scope.meta.network + '_' + $scope.meta.station + '_' + $scope.meta.perspective; 
 
 		stationFile.save(name, { 
-			$meta: $scope.meta, 
+			meta: $scope.meta, 
 			channels: $scope.channels
 		});
 	};
