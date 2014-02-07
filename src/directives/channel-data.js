@@ -32,7 +32,7 @@ app.directive('channelData', function(resizeResponder) {
 				return getColor;
 			}();
 
-			colorRegistry.addRule('pt', function() {
+			colorRegistry.addRule('pt', function(d) {
 				return 'blue';
 			});
 
@@ -41,7 +41,7 @@ app.directive('channelData', function(resizeResponder) {
 			});
 
 			var drawChannels = function() {
-				if(!scope.channels) return;
+				if(!(scope.channels instanceof Array)) return;
 				var circle = svg.selectAll('circle')
 					.data(scope.channels, function(d) { return d.id; });
 
@@ -58,6 +58,7 @@ app.directive('channelData', function(resizeResponder) {
 					.remove();
 
 				circle.transition()
+					.attr('fill', colorRegistry)
 					.attr('cx', function(d) { return d.position.left; })
 					.attr('cy', function(d) { return d.position.top; });
 			};

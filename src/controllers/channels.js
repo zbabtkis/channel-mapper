@@ -6,7 +6,7 @@ app.controller('ChannelsCtrl', function($scope, Channel, resizeResponder, uuid4)
 
 	$scope.saveChannel = function() {
 		var chn = angular.extend($scope.model, $scope.modelCopy);
-		
+
 		$scope.showEditor = false;
 		if(chn.isNew) {
 			chn.id = uuid4.generate(); 
@@ -67,7 +67,7 @@ app.controller('ChannelsCtrl', function($scope, Channel, resizeResponder, uuid4)
 			height: size.height 
 		};
 
-		$scope.$apply();
+		//$scope.$apply();
 	};
 
 });
